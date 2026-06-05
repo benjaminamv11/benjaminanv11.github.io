@@ -1,0 +1,303 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap');
+
+:root {
+    --bg-base: #0a0a23;
+    --bg-container: rgba(255, 255, 255, 0.03);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --primary: #17C1D1;
+    --primary-glow: rgba(23, 193, 209, 0.35);
+    --secondary: #ff3366;
+    --secondary-glow: rgba(255, 51, 102, 0.35);
+    --text-main: #f8f9fa;
+    --text-muted: #a0aec0;
+    --card-bg: rgba(255, 255, 255, 0.05);
+}
+
+/* Reset de márgenes y box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-base);
+    background-image: 
+        radial-gradient(at 10% 20%, rgba(26, 21, 62, 0.7) 0px, transparent 50%),
+        radial-gradient(at 90% 80%, rgba(13, 35, 58, 0.7) 0px, transparent 50%);
+    color: var(--text-main);
+    font-family: 'Outfit', sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+/* Contenedor Principal: Define los márgenes y ancho máximo de la web */
+.container {
+    max-width: 900px;
+    margin: 0 auto; /* Márgenes laterales automáticos para centrar */
+    padding: 40px;
+    background: var(--bg-container);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+/* Cabecera y Títulos */
+h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--text-main);
+    text-align: center;
+    margin-bottom: 5px;
+    background: linear-gradient(135deg, var(--text-main) 30%, var(--primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-top: 30px;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--primary);
+    padding-left: 15px;
+}
+
+p {
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+/* Enlaces */
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+a:hover {
+    color: #fff;
+    text-shadow: 0 0 8px var(--primary-glow);
+}
+
+/* Perfil (Avatar y Bio) */
+.profile-section {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-top: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.profile-info p {
+    margin-bottom: 10px;
+}
+
+/* Listas */
+ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+ul li {
+    background: var(--card-bg);
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+ul li:hover {
+    transform: translateX(5px);
+    border-color: rgba(23, 193, 209, 0.3);
+}
+
+ul li::before {
+    content: "✦";
+    color: var(--primary);
+    margin-right: 12px;
+    font-weight: bold;
+}
+
+/* Lista de Amigos en una cuadrícula (Grid) */
+.friends-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.friend-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 15px;
+    text-align: center;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.friend-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+    box-shadow: 0 8px 20px var(--primary-glow);
+}
+
+.friend-card a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* ==========================================================================
+   TÉCNICAS DE RECORTE Y MOLDEADO DE IMÁGENES
+   ========================================================================== */
+
+/* Ajuste general para que la imagen mantenga su proporción al recortarse */
+.molded-img {
+    width: 160px;
+    height: 160px;
+    object-fit: cover; /* Recorta la imagen para llenar el contenedor sin estirarse */
+    display: block;
+    margin: 0 auto;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* 1. Forma Circular perfecta */
+.shape-circle {
+    border-radius: 50%;
+    border: 4px solid var(--primary);
+    filter: drop-shadow(0 0 10px var(--primary-glow));
+}
+
+.shape-circle:hover {
+    transform: scale(1.05) rotate(5deg);
+    border-color: #fff;
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.4));
+}
+
+/* 2. Forma de Hoja / Esquinas Asimétricas */
+.shape-leaf {
+    border-radius: 50px 0px 50px 0px; /* Redondea sólo dos esquinas opuestas */
+    border: 3px solid var(--primary);
+}
+
+.shape-leaf:hover {
+    border-radius: 0px 50px 0px 50px; /* Invierte las esquinas al pasar el cursor */
+    transform: scale(1.05);
+}
+
+/* 3. Forma Hexagonal usando clip-path */
+.shape-hexagon {
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    background-color: var(--primary); /* Soporte de fallback */
+}
+
+.shape-hexagon:hover {
+    transform: scale(1.08) rotate(360deg);
+}
+
+/* 4. Forma de Escudo / Emblema usando clip-path */
+.shape-shield {
+    clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
+}
+
+.shape-shield:hover {
+    transform: scale(1.05) translateY(-5px);
+}
+
+/* 5. Forma de Estrella usando clip-path */
+.shape-star {
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.shape-star:hover {
+    transform: scale(1.1) rotate(15deg);
+}
+
+/* Sección de la Galería de Demostración */
+.gallery-section {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid var(--border-color);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.gallery-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+}
+
+.gallery-card:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.gallery-card h3 {
+    font-size: 1.1rem;
+    color: #fff;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.gallery-card code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--primary);
+    background: rgba(0, 0, 0, 0.3);
+    padding: 4px 8px;
+    border-radius: 6px;
+    display: block;
+    margin-top: 8px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body {
+        padding: 20px 10px;
+    }
+    
+    .container {
+        padding: 20px;
+    }
+    
+    .profile-section {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+    }
+}
